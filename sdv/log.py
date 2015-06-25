@@ -5,7 +5,7 @@ import sys
 # set initial level to WARN.  This so that
 # log statements don't occur in the absence of explicit
 # logging being enabled for 'sqlalchemy'.
-rootlogger = logging.getLogger('sqlalchemy')
+rootlogger = logging.getLogger('sdv')
 if rootlogger.level == logging.NOTSET:
     rootlogger.setLevel(logging.WARN)
 
