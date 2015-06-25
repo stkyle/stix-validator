@@ -4,6 +4,8 @@
 # builtin
 import os
 import collections
+import logging
+from pprint import pformat
 
 # external
 from lxml import etree
@@ -14,6 +16,7 @@ from sdv import errors, utils, xmlconst
 # relative
 from . import base
 
+log = logging.getLogger(__name__)
 
 class XmlSchemaError(base.ValidationError):
     """Represents an XML Schema validation error.
@@ -170,8 +173,9 @@ class XmlSchemaValidator(object):
             else:
                 locpath = os.path.abspath(os.path.join(dir_, loc))
 
+            log.debug('Include Schema: %s' % locpath)
             includes.append(locpath)
-
+        
         return includes
 
     def _build_include_graph(self, schema_paths):
